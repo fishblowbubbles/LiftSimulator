@@ -96,9 +96,9 @@ public class Dispatcher extends Thread {
 
     public void print() {
         System.out.println(
-                "\nDispatcher -" +
-                        "\n\tNo. of Floors : " + this.numFloors +
-                        "\n\tNo. of Lifts : " + this.numLifts
+            "\nDispatcher -" +
+            "\n\tNo. of Floors : " + this.numFloors +
+            "\n\tNo. of Lifts : " + this.numLifts
         );
     }
 
@@ -148,9 +148,9 @@ public class Dispatcher extends Thread {
     /**
      * Extracts all pending requests in the specified direction.
      *
-     * @param 	direction - to search, either Direction.UP or 
+     * @param   direction - to search, either Direction.UP or
      * 			Direction.DOWN
-     * @return 	a list of pending requests, empty if there are none
+     * @return  a list of pending requests, empty if there are none
      */
     private List < Request > getPendingRequests(Direction direction) {
         List < Request > requests = new LinkedList < > ();
@@ -270,6 +270,7 @@ public class Dispatcher extends Thread {
                 }
             }
         }
+
         return availableLifts;
     }
 
@@ -289,6 +290,7 @@ public class Dispatcher extends Thread {
             if (distance < closestDistance)
                 closestDistance = distance;
         }
+
         return closestDistance;
     }
 }
