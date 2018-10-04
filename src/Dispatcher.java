@@ -43,25 +43,20 @@ public class Dispatcher extends Thread {
      * the up and down directions, dispatching lifts accordingly.
      */
     @Override public void run() {
-        for (Lift lift: this.lifts) {
+        for (Lift lift: this.lifts)
             lift.start();
-        }
 
         while (true) {
             List < Request > up = this.getPendingRequests(Direction.UP);
             List < Request > down = this.getPendingRequests(Direction.DOWN);
 
-            if (!up.isEmpty()) {
-                for (Request request: up) {
+            if (!up.isEmpty())
+                for (Request request: up)
                     this.dispatchLift(request);
-                }
-            }
 
-            if (!down.isEmpty()) {
-                for (Request request: down) {
+            if (!down.isEmpty())
+                for (Request request: down)
                     this.dispatchLift(request);
-                }
-            }
         }
     }
 
@@ -83,12 +78,11 @@ public class Dispatcher extends Thread {
                               List < Integer > destinations) {
         Request request = this.floors.get(floor).get(direction);
 
-        for (int destination: destinations) {
+        for (int destination: destinations)
             //	for simulation purposes, in reality this check is not 
             //	required - you can't press an already-selected button
             if (!request.destinations.contains(destination))
                 request.destinations.add(destination);
-        }
 
         request.setStatus(Status.AWAITING);
         request.print();
@@ -190,10 +184,9 @@ public class Dispatcher extends Thread {
                 request.direction);
         List < Integer > destinations = lift.destinations;
 
-        for (int destination : request.destinations) {
+        for (int destination : request.destinations)
             if (!destinations.contains(destination))
                 destinations.add(destination);
-        }
 
         Collections.sort(destinations);
         if (request.direction == Direction.DOWN)
